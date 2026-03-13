@@ -223,7 +223,13 @@
     .rating-label{font-size:.7rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
     .reviews-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .rcard{background:white;padding:26px 22px;border-bottom:3px solid var(--gold)}
-    .rstars{color:var(--gold);margin-bottom:11px;font-size:.88rem}
+    .rstars{color:var(--gold);margin-bottom:11px;font-size:.88rem;display:flex;gap:3px}
+    .rstars span{opacity:0;transform:scale(0) rotate(-20deg);display:inline-block;transition:all .4s cubic-bezier(.34,1.56,.64,1)}
+    .rcard.visible .rstars span{opacity:1;transform:scale(1) rotate(0)}
+    .rcard.visible .rstars span:nth-child(2){transition-delay:.1s}
+    .rcard.visible .rstars span:nth-child(3){transition-delay:.2s}
+    .rcard.visible .rstars span:nth-child(4){transition-delay:.3s}
+    .rcard.visible .rstars span:nth-child(5){transition-delay:.4s}
     .rtext{font-family:'Playfair Display',serif;font-style:italic;font-size:.94rem;line-height:1.7;margin-bottom:12px}
     .rauthor{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
@@ -243,11 +249,11 @@
     .map-box iframe{width:100%;height:100%;border:none;filter:grayscale(80%) invert(90%)}
 
     /* FOOTER */
-    footer{background:#0D0A05;padding:34px 5%;text-align:center;border-top:1px solid rgba(200,148,42,.18)}
-    .foot-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
+    footer{background:#0D0A05;padding:60px 5% 40px;text-align:center;border-top:1px solid rgba(200,148,42,.18)}
+    .foot-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px}
     .foot-logo img{height:38px;width:38px;object-fit:cover;border-radius:50%}
     .foot-brand{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold)}
-    .foot-links{display:flex;justify-content:center;gap:18px;margin:12px 0;flex-wrap:wrap}
+    .foot-links{display:flex;justify-content:center;gap:22px;margin:18px 0 20px;flex-wrap:wrap}
     .foot-links a{color:rgba(255,255,255,.36);text-decoration:none;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
     .foot-links a:hover{color:var(--gold)}
     .foot-sub{color:rgba(255,255,255,.3);font-size:.74rem}
@@ -944,15 +950,15 @@
     <div class="divider"></div>
   </div>
   <div class="rating-bar fade-up">
-    <div class="rating-stat"><div class="rating-num">4.8</div><div class="rating-label">Google Rating</div></div>
-    <div class="rating-stat"><div class="rating-num">500+</div><div class="rating-label">Happy Customers</div></div>
-    <div class="rating-stat"><div class="rating-num">5</div><div class="rating-label">Days a Week</div></div>
-    <div class="rating-stat"><div class="rating-num">100%</div><div class="rating-label">Fresh Ingredients</div></div>
+    <div class="rating-stat"><div class="rating-num" data-target="4.8" data-decimal="1">0</div><div class="rating-label">Google Rating</div></div>
+    <div class="rating-stat"><div class="rating-num" data-target="500" data-suffix="+">0</div><div class="rating-label">Happy Customers</div></div>
+    <div class="rating-stat"><div class="rating-num" data-target="5">0</div><div class="rating-label">Days a Week</div></div>
+    <div class="rating-stat"><div class="rating-num" data-target="100" data-suffix="%">0</div><div class="rating-label">Fresh Ingredients</div></div>
   </div>
   <div class="reviews-grid">
-    <div class="rcard fade-up"><div class="rstars">★★★★★</div><p class="rtext">"The pasta is absolutely incredible — fresh, perfectly seasoned and huge portions. Best Italian in Amsterdam by far!"</p><div class="rauthor">— Maria V., Amsterdam</div></div>
-    <div class="rcard fade-up"><div class="rstars">★★★★★</div><p class="rtext">"The GORDO Burger is unlike anything else. The ribs are also amazing — we order here every single week!"</p><div class="rauthor">— Thomas K., Amsterdam</div></div>
-    <div class="rcard fade-up"><div class="rstars">★★★★★</div><p class="rtext">"Super fast pickup, always hot and delicious. The Gordo Kapsalon is absolutely incredible — totally addictive!"</p><div class="rauthor">— Sophie R., Amsterdam</div></div>
+    <div class="rcard fade-up"><div class="rstars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="rtext">"The pasta is absolutely incredible — fresh, perfectly seasoned and huge portions. Best Italian in Amsterdam by far!"</p><div class="rauthor">— Maria V., Amsterdam</div></div>
+    <div class="rcard fade-up"><div class="rstars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="rtext">"The GORDO Burger is unlike anything else. The ribs are also amazing — we order here every single week!"</p><div class="rauthor">— Thomas K., Amsterdam</div></div>
+    <div class="rcard fade-up"><div class="rstars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="rtext">"Super fast pickup, always hot and delicious. The Gordo Kapsalon is absolutely incredible — totally addictive!"</p><div class="rauthor">— Sophie R., Amsterdam</div></div>
   </div>
 </section>
 
@@ -981,12 +987,11 @@
 <footer role="contentinfo">
   <div class="foot-logo"><img src="images/logo.jpg" alt="Il Gordo" loading="lazy"/><span class="foot-brand">Il Gordo</span></div>
   <div class="foot-links">
-    <a href="#about">About</a><a href="#menu">Menu</a><a href="#order">Order</a><a href="#contact">Contact</a>
-    <a href="IL_GORDO_MENU.pdf" download>Download Menu</a>
-    <a href="https://www.ubereats.com/nl-en/store/il-gordo-italian-comfort-food/_03h1ALwRBGkYE3D-DAsJg" target="_blank">Uber Eats</a>
+    <a href="#about">About</a><a href="#popular">Popular</a><a href="#menu">Menu</a><a href="#order">Order</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    <a href="https://www.ubereats.com/nl-en/store/il-gordo-italian-comfort-food/_03h1ALwRBGkYE3D-DAsJg" target="_blank" rel="noopener">Uber Eats</a>
   </div>
   <p class="foot-sub">Italian Street Food · Amstelstraat 32, Amsterdam</p>
-  <p style="color:rgba(255,255,255,.13);font-size:.68rem;margin-top:8px">© 2025 Il Gordo. All rights reserved.</p>
+  <p style="color:rgba(255,255,255,.13);font-size:.68rem;margin-top:16px">© 2025 Il Gordo. All rights reserved.</p>
   <a href="https://socialnow.nl" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;text-decoration:none;color:rgba(255,255,255,.3);font-size:.7rem;transition:opacity .2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'" aria-label="Made by SocialNow">
     Made by <img src="https://storage.googleapis.com/socialnow_branding/SocialNow_Logo_Wit_Horizontaal.png" alt="SocialNow" style="height:18px;opacity:.7"/>
   </a>
@@ -1294,6 +1299,30 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* Counter animation */
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    counterObs.unobserve(e.target);
+    e.target.querySelectorAll('.rating-num[data-target]').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const decimal = parseInt(el.dataset.decimal) || 0;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const val = (target * ease).toFixed(decimal);
+        el.textContent = val + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.rating-bar').forEach(el => counterObs.observe(el));
 
 buildCartMenu();
 renderCart();
