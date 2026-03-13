@@ -33,13 +33,13 @@
     "description": "Authentic Italian street food in Amsterdam",
     "image": "images/hero-bg.jpg",
     "url": "https://ilgordo.nl",
-    "telephone": "+31207760900",
+    "telephone": "+31202051167",
     "email": "info@ilgordo.nl",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Kinkerstraat 212",
+      "streetAddress": "Amstelstraat 32",
       "addressLocality": "Amsterdam",
-      "postalCode": "1053 EM",
+      "postalCode": "1017 DA",
       "addressCountry": "NL"
     },
     "geo": {
@@ -49,12 +49,13 @@
     },
     "servesCuisine": "Italian",
     "priceRange": "€€",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "17:00",
-      "closes": "22:00"
-    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Monday","opens": "13:00","closes": "23:00"},
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Thursday","opens": "12:00","closes": "00:00"},
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Friday","opens": "10:30","closes": "01:00"},
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Saturday","opens": "10:30","closes": "01:00"},
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Sunday","opens": "12:00","closes": "00:00"}
+    ],
     "hasMenu": {
       "@type": "Menu",
       "url": "IL_GORDO_MENU.pdf"
@@ -358,9 +359,9 @@
     <li><a href="#menu">Menu</a></li>
     <li><a href="#order">Order</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:0207760900" class="nav-phone">
+    <li><a href="tel:0202051167" class="nav-phone">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      020 776 0900
+      020 205 1167
     </a></li>
     <li><button class="cart-btn" onclick="openCart()" aria-label="Open shopping cart">
       <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M17 13l1.1 5.5M9 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm9 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
@@ -374,7 +375,7 @@
   <a href="#menu" onclick="closeMobile()">Menu</a>
   <a href="#order" onclick="closeMobile()">Order</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="tel:0207760900">📞 020 776 0900</a>
+  <a href="tel:0202051167">📞 020 205 1167</a>
   <button onclick="openCart();closeMobile()">🛒 Order for Pickup</button>
 </div>
 
@@ -403,10 +404,10 @@
 
 <!-- STRIP -->
 <div class="strip">
-  <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Open daily 17:00–22:00</div>
+  <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Tue &amp; Wed closed · Other days from 10:30</div>
   <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>Amsterdam</div>
   <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M17 13l1.1 5.5M9 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm9 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>Pickup &amp; Delivery</div>
-  <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>020 776 0900</div>
+  <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>020 205 1167</div>
   <div class="strip-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.8 / 5 op Google</div>
 </div>
 
@@ -960,17 +961,17 @@
       <span class="section-tag">Find Us</span>
       <h2 class="section-title">Come visit <em>or order</em></h2>
       <div class="divider"></div>
-      <p class="section-sub">Open every evening from 17:00. Walk in, order online for pickup, or get it delivered via Uber Eats.</p>
+      <p class="section-sub">Walk in, order online for pickup, or get it delivered via Uber Eats.</p>
       <div class="contact-rows">
-        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><div><strong>Address</strong>Amsterdam</div></div>
-        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><strong>Opening Hours</strong>Monday – Friday: 17:00 – 22:00</div></div>
-        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div><strong>Phone</strong><a href="tel:0207760900">020 776 0900</a></div></div>
+        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><div><strong>Address</strong>Amstelstraat 32, 1017 DA Amsterdam</div></div>
+        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><strong>Opening Hours</strong>Mon 13:00–23:00 · Thu 12:00–00:00<br>Fri–Sat 10:30–01:00 · Sun 12:00–00:00<br>Tue &amp; Wed: Closed</div></div>
+        <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div><strong>Phone</strong><a href="tel:0202051167">020 205 1167</a></div></div>
         <div class="crow"><svg class="crow-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><div><strong>Email</strong><a href="mailto:info@ilgordo.nl">info@ilgordo.nl</a></div></div>
       </div>
-      <a href="tel:0207760900" class="call-cta"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us: 020 776 0900</a>
+      <a href="tel:0202051167" class="call-cta"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.34 1.2 2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l.77-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us: 020 205 1167</a>
     </div>
     <div class="map-box fade-up">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.1!2d4.8686!3d52.3676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609e66e0fbb5f%3A0x742bba6e2c1a5b0!2sKinkerstraat%2C+Amsterdam!5e0!3m2!1sen!2snl!4v1710000000000" allowfullscreen loading="lazy" title="Il Gordo Amsterdam"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.5!2d4.8975!3d52.3658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609e8c5f3c0a7%3A0x1234567890abcdef!2sAmstelstraat+32%2C+1017+DA+Amsterdam!5e0!3m2!1sen!2snl!4v1710000000000" allowfullscreen loading="lazy" title="Il Gordo Amsterdam - Amstelstraat 32"></iframe>
     </div>
   </div>
 </section>
@@ -982,8 +983,11 @@
     <a href="IL_GORDO_MENU.pdf" download>Download Menu</a>
     <a href="https://www.ubereats.com/nl-en/store/il-gordo-italian-comfort-food/_03h1ALwRBGkYE3D-DAsJg" target="_blank">Uber Eats</a>
   </div>
-  <p class="foot-sub">Italian Street Food · Amsterdam · Open Mon–Fri 17:00–22:00</p>
+  <p class="foot-sub">Italian Street Food · Amstelstraat 32, Amsterdam</p>
   <p style="color:rgba(255,255,255,.13);font-size:.68rem;margin-top:8px">© 2025 Il Gordo. All rights reserved.</p>
+  <a href="https://socialnow.nl" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;text-decoration:none;color:rgba(255,255,255,.3);font-size:.7rem;transition:opacity .2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'" aria-label="Made by SocialNow">
+    Made by <img src="https://storage.googleapis.com/socialnow_branding/SocialNow_Logo_Zwart_Horizontaal%20Site.png" alt="SocialNow" style="height:18px;filter:invert(1);opacity:.5"/>
+  </a>
 </footer>
 
 <!-- CART PANEL -->
@@ -1059,7 +1063,7 @@
     <div class="success-scr" id="success-scr">
       <div class="s-icon">🎉</div>
       <h3>Order Received!</h3>
-      <p>Your order has been sent to Il Gordo.<br>We'll have everything ready at your pickup time.<br><br>Questions? Call us: <strong>020 776 0900</strong></p>
+      <p>Your order has been sent to Il Gordo.<br>We'll have everything ready at your pickup time.<br><br>Questions? Call us: <strong>020 205 1167</strong></p>
     </div>
   </div>
 </div>
