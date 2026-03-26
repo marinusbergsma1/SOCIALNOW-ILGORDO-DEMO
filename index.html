@@ -91,6 +91,43 @@
     .cart-btn{background:var(--gold);border:none;padding:9px 15px;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--dark);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:background .2s;font-family:'Lato',sans-serif;white-space:nowrap}
     .cart-btn:hover{background:var(--gold-l)}
     .cart-badge{background:var(--dark);color:white;border-radius:50%;width:19px;height:19px;display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:700;flex-shrink:0}
+    /* CHATBOT */
+    .chat-fab{position:fixed;bottom:24px;right:24px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.35);transition:transform .2s,background .2s}
+    .chat-fab:hover{transform:scale(1.08);background:var(--gold-l)}
+    .chat-fab svg{width:28px;height:28px;fill:var(--dark);transition:transform .3s}
+    .chat-fab.open svg{transform:rotate(90deg)}
+    .chat-window{position:fixed;bottom:96px;right:24px;z-index:200;width:370px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 140px);background:var(--warm);border-radius:16px;box-shadow:0 12px 48px rgba(0,0,0,.4);display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(200,148,42,.25)}
+    .chat-window.open{display:flex;animation:chatSlide .3s ease}
+    @keyframes chatSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .chat-header{background:var(--dark);padding:16px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(200,148,42,.3)}
+    .chat-avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .chat-header-info h3{font-family:'Playfair Display',serif;color:white;font-size:.95rem;margin:0}
+    .chat-header-info p{color:rgba(255,255,255,.5);font-size:.72rem;margin:2px 0 0}
+    .chat-header-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;margin-left:auto;flex-shrink:0}
+    .chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+    .chat-body::-webkit-scrollbar{width:4px}
+    .chat-body::-webkit-scrollbar-thumb{background:rgba(200,148,42,.3);border-radius:4px}
+    .chat-msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.5;animation:msgFade .3s ease}
+    @keyframes msgFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .chat-msg.bot{background:var(--dark);color:rgba(255,255,255,.9);align-self:flex-start;border-bottom-left-radius:4px}
+    .chat-msg.user{background:var(--gold);color:var(--dark);align-self:flex-end;border-bottom-right-radius:4px;font-weight:600}
+    .chat-msg.bot a{color:var(--gold);text-decoration:underline}
+    .chat-quick{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start}
+    .chat-quick button{background:none;border:1px solid rgba(200,148,42,.4);color:var(--gold);padding:6px 12px;border-radius:20px;font-size:.76rem;cursor:pointer;font-family:'Lato',sans-serif;transition:all .2s;white-space:nowrap}
+    .chat-quick button:hover{background:var(--gold);color:var(--dark)}
+    .chat-typing{display:flex;gap:4px;align-self:flex-start;padding:10px 16px;background:var(--dark);border-radius:14px;border-bottom-left-radius:4px}
+    .chat-typing span{width:6px;height:6px;background:rgba(255,255,255,.4);border-radius:50%;animation:typeDot 1.2s infinite}
+    .chat-typing span:nth-child(2){animation-delay:.2s}
+    .chat-typing span:nth-child(3){animation-delay:.4s}
+    @keyframes typeDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+    .chat-input-area{padding:12px;border-top:1px solid rgba(200,148,42,.15);display:flex;gap:8px;background:white}
+    .chat-input-area input{flex:1;border:1px solid rgba(0,0,0,.12);border-radius:24px;padding:10px 16px;font-size:.85rem;font-family:'Lato',sans-serif;outline:none;transition:border-color .2s}
+    .chat-input-area input:focus{border-color:var(--gold)}
+    .chat-input-area button{width:38px;height:38px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+    .chat-input-area button:hover{background:var(--gold-l)}
+    .chat-input-area button svg{width:16px;height:16px;fill:var(--dark)}
+    @media(max-width:600px){.chat-window{bottom:0;right:0;width:100%;height:100vh;max-height:100vh;border-radius:0}.chat-fab{bottom:16px;right:16px;width:54px;height:54px}}
+
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
     .hamburger span{width:24px;height:2px;background:white;border-radius:2px;display:block}
     .mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(26,18,8,.98);padding:18px 5%;z-index:99;flex-direction:column;gap:10px;border-bottom:1px solid rgba(200,148,42,.3)}
@@ -1326,6 +1363,150 @@ document.querySelectorAll('.rating-bar').forEach(el => counterObs.observe(el));
 
 buildCartMenu();
 renderCart();
+
+/* ── CHATBOT ── */
+const chatResponses = {
+  menu: `Here's what we serve:\n\n🍔 <strong>Burgers & Fries</strong> — from €3,00\n🍝 <strong>Homemade Pastas</strong> — from €9,50\n🥖 <strong>Signature Sandwiches</strong> — from €9,50\n🍽️ <strong>Platters</strong> — from €15,50\n🍮 <strong>Sweets & Drinks</strong>\n\nWant to see the full menu? <a href="#menu" onclick="toggleChat()">Click here</a> or order directly!`,
+  hours: `We're open <strong>daily from 17:00 – 22:00</strong>.\n\nReady for pickup or delivery via Uber Eats! 🛵`,
+  location: `You'll find us at:\n\n📍 <strong>Amstelstraat 32, Amsterdam</strong>\n(Near Rembrandtplein)\n\n<a href="https://maps.google.com/?q=Il+Gordo+Amstelstraat+32+Amsterdam" target="_blank">Open in Google Maps →</a>`,
+  order: `You can order in two ways:\n\n🛒 <strong>Pickup</strong> — Order via our website and pick up at the restaurant. <a href="javascript:void(0)" onclick="toggleChat();document.querySelector('.cart-btn').click()">Order now →</a>\n\n🛵 <strong>Uber Eats</strong> — <a href="https://www.ubereats.com/nl-en/store/il-gordo-italian-comfort-food/_03h1ALwRBGkYE3D-DAsJg" target="_blank">Order delivery →</a>`,
+  allergen: `We take allergies seriously! 🍃\n\nPlease mention any allergies when placing your order, and our kitchen will take care of it.\n\nFor specific questions, call us: <strong>020 205 1167</strong>`,
+  contact: `📞 <strong>020 205 1167</strong>\n📧 info@ilgordo.nl\n📍 Amstelstraat 32, Amsterdam\n\nOr just send us a message right here! 😊`,
+  default: `Great question! For the best answer, you can:\n\n📞 Call us: <strong>020 205 1167</strong>\n📧 Email: info@ilgordo.nl\n\nOr ask me about our <strong>menu</strong>, <strong>opening hours</strong>, <strong>location</strong>, or how to <strong>order</strong>!`
+};
+
+function detectIntent(msg) {
+  const m = msg.toLowerCase();
+  if (/menu|kaart|gerecht|eat|eten|pasta|burger|sandwich|platter|spareribs|cotoletta|prij/.test(m)) return 'menu';
+  if (/open|time|hour|uur|tijden|wanneer|dicht|closed/.test(m)) return 'hours';
+  if (/where|waar|locat|adres|address|route|map|richting|vind/.test(m)) return 'location';
+  if (/order|bestel|pickup|afhaal|deliver|bezorg|uber/.test(m)) return 'order';
+  if (/allerg|gluten|lactose|vegan|vegetar|nut|noten/.test(m)) return 'allergen';
+  if (/contact|phone|tel|bel|mail|email|nummer/.test(m)) return 'contact';
+  if (/hey|hi|hello|hoi|hallo|goedenavond|goedemiddag/.test(m)) return 'greeting';
+  return 'default';
+}
+
+const chatBody = document.getElementById('chat-body');
+const chatInput = document.getElementById('chat-input');
+let chatOpen = false;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chat-window').classList.toggle('open', chatOpen);
+  document.getElementById('chat-fab').classList.toggle('open', chatOpen);
+  if (chatOpen) chatInput.focus();
+}
+
+function addMsg(text, type) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.innerHTML = text.replace(/\n/g, '<br>');
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function addQuickReplies(replies) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-quick';
+  replies.forEach(r => {
+    const btn = document.createElement('button');
+    btn.textContent = r.label;
+    btn.onclick = () => { wrap.remove(); sendChat(r.value); };
+    wrap.appendChild(btn);
+  });
+  chatBody.appendChild(wrap);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function showTyping() {
+  const t = document.createElement('div');
+  t.className = 'chat-typing';
+  t.id = 'chat-typing';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  chatBody.appendChild(t);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+function hideTyping() { const t = document.getElementById('chat-typing'); if (t) t.remove(); }
+
+function sendChat(text) {
+  if (!text.trim()) return;
+  addMsg(text, 'user');
+  chatInput.value = '';
+  showTyping();
+  const intent = detectIntent(text);
+  const delay = 600 + Math.random() * 600;
+  setTimeout(() => {
+    hideTyping();
+    if (intent === 'greeting') {
+      addMsg(`Ciao! 👋 Welcome to <strong>Il Gordo</strong>!\n\nHow can I help you today?`, 'bot');
+      addQuickReplies([
+        { label: '📋 Menu', value: 'Show me the menu' },
+        { label: '🕐 Opening hours', value: 'What are your hours?' },
+        { label: '🛒 Order now', value: 'How do I order?' },
+        { label: '📍 Location', value: 'Where are you located?' }
+      ]);
+    } else {
+      addMsg(chatResponses[intent], 'bot');
+      if (intent === 'default') {
+        addQuickReplies([
+          { label: '📋 Menu', value: 'Show me the menu' },
+          { label: '🕐 Hours', value: 'Opening hours' },
+          { label: '🛒 Order', value: 'How to order' },
+          { label: '📍 Location', value: 'Where are you?' }
+        ]);
+      }
+    }
+  }, delay);
+}
+
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(chatInput.value); });
+
+// Initial greeting after 2s
+setTimeout(() => {
+  if (!chatOpen) return;
+}, 100);
+// When chat opens for first time, show greeting
+let chatInited = false;
+const origToggle = toggleChat;
+toggleChat = function() {
+  origToggle();
+  if (chatOpen && !chatInited) {
+    chatInited = true;
+    setTimeout(() => {
+      addMsg(`Ciao! 👋 Welcome to <strong>Il Gordo</strong>!\n\nI can help you with our menu, opening hours, ordering, and more. What would you like to know?`, 'bot');
+      addQuickReplies([
+        { label: '📋 View Menu', value: 'Show me the menu' },
+        { label: '🕐 Opening Hours', value: 'What are your hours?' },
+        { label: '🛒 Order Now', value: 'How do I order?' },
+        { label: '📍 Find Us', value: 'Where are you located?' }
+      ]);
+    }, 500);
+  }
+};
 </script>
+
+<!-- CHATBOT WIDGET -->
+<button class="chat-fab" id="chat-fab" onclick="toggleChat()" aria-label="Open chat">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+</button>
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">🍝</div>
+    <div class="chat-header-info">
+      <h3>Il Gordo</h3>
+      <p>Usually replies instantly</p>
+    </div>
+    <div class="chat-header-dot"></div>
+  </div>
+  <div class="chat-body" id="chat-body"></div>
+  <div class="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Ask us anything..." autocomplete="off"/>
+    <button onclick="sendChat(chatInput.value)" aria-label="Send message">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
 </body>
 </html>
